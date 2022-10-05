@@ -1,0 +1,21 @@
+﻿@layout TelerikLayout
+@inherits LayoutComponentBase
+@using ConfigDashSample.Client.Shared.Layout
+
+<SideBar Expanded=true NavItems="PageLinks">
+	<BodyFragment>
+		<main>
+			<article class="content px-4">
+				@Body
+			</article>
+		</main>
+	</BodyFragment>
+</SideBar>
+
+@code
+{
+	IEnumerable<DrawerItem> PageLinks { get; set; } = new List<DrawerItem> {
+		new DrawerItem { Text = "Home", Icon = "home", Url = "/", Group="home" },
+		new DrawerItem { Text = "Drag 'n' Drop", Icon="test", Url = "/Drag'n'Drop"}
+	};
+}

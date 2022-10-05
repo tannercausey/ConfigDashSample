@@ -1,0 +1,62 @@
+﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Routing
+
+<TelerikDrawer
+	@ref="MenuDrawer"
+	Expanded="@Expanded"
+	ExpandedChanged="((bool newValue) => ExpandedChangeHandler(newValue))"
+	TItem="DrawerItem"
+	Class="sidebar h-100"
+	Width="230px"
+	Data="NavItems"
+	Mode="DrawerMode.Push"
+	Position="DrawerPosition.Left"
+	MiniMode="!Expanded"
+>
+	<Template>
+		<SideBarItems Data="context" OnClick="ToggleMenuDrawer" Expanded="@Expanded"/>
+	</Template>
+	<DrawerContent>
+		<div class="idk top-row"></div>
+		@BodyFragment
+	</DrawerContent>
+</TelerikDrawer>
+
+@code {
+	[Parameter]
+	public RenderFragment? BodyFragment { get; set; }
+	[Parameter]
+	public IEnumerable<DrawerItem> NavItems { get; set; } = new List<DrawerItem> {
+		new DrawerItem { Text = "Home", Icon = "home", Url = "/", Group="home" },
+		new DrawerItem {
+			Text = "Second Link",
+			Icon = "categorize",
+			Url = "display",
+			Expanded = true,
+			Children = new List<DrawerItem>() {
+				new DrawerItem {Text = "SubLink 1", Icon = "grid", Level = 1, Url = "/expage2"},
+				new DrawerItem {Text = "Sublink 2", Icon = "calendar-date", Level = 1, Url = "/expage3"},
+				new DrawerItem {Text = "Sublink 3", Icon = "menu", Level = 1, Url = "/expage4"}
+			}
+		},
+		new DrawerItem { Text = "Third Link", Icon="calendar", Url = "/expage5", Group = "ext"}
+	};
+	[Parameter]
+	public bool Expanded { get; set; } = false;
+	DrawerItem Home => NavItems.First();
+
+	TelerikDrawer<DrawerItem> MenuDrawer { get; set; } = default!;
+
+	async Task ToggleMenuDrawer()
+	{
+		if (Expanded)
+			await MenuDrawer.CollapseAsync();
+		else
+			await MenuDrawer.ExpandAsync();
+	}
+
+	void ExpandedChangeHandler(bool value)
+	{
+		Expanded = value;
+	}
+}

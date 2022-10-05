@@ -1,0 +1,26 @@
+﻿<TelerikGrid Data="@GridData" Height="100%">
+	<GridColumns>
+		<GridColumn Field=@nameof(Risk.RiskID) Title="Channel" />
+		<GridColumn Field=@nameof(Risk.RiskName) />
+	</GridColumns>
+</TelerikGrid>
+
+@code {
+	class Risk
+	{
+		public int RiskID { get; set; }
+		public string? RiskName { get; set; }
+	}
+	IEnumerable<Risk>? GridData { get; set; }
+	protected override void OnInitialized()
+	{
+		GridData = new List<Risk>
+		{
+			new Risk { RiskID = 1, RiskName = "Risk1" },
+			new Risk { RiskID = 2, RiskName = "Risk2" },
+			new Risk { RiskID = 3, RiskName = "Risk3" },
+			new Risk { RiskID = 4, RiskName = "Risk4" },
+			new Risk { RiskID = 5, RiskName = "Risk5" },
+		};
+	}
+}

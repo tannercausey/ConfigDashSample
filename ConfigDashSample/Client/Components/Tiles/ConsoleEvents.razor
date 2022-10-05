@@ -1,0 +1,27 @@
+﻿<TelerikGrid Data="@GridData" Height="100%">
+	<GridColumns>
+		<GridColumn Field=@nameof(ConsoleEvent.ConsoleEventName) Title="Channel" />
+		<GridColumn Field=@nameof(ConsoleEvent.ConsoleEventCount) />
+	</GridColumns>
+</TelerikGrid>
+
+@code {
+	class ConsoleEvent
+	{
+		public string? ConsoleEventName { get; set; }
+		public int ConsoleEventCount { get; set; }
+	}
+	IEnumerable<ConsoleEvent>? GridData { get; set; }
+	protected override void OnInitialized()
+	{
+		GridData = new List<ConsoleEvent>
+		{
+			new ConsoleEvent { ConsoleEventCount = 10, ConsoleEventName = "Service1" },
+			new ConsoleEvent { ConsoleEventCount = 2, ConsoleEventName = "Service2" },
+			new ConsoleEvent { ConsoleEventCount = 7, ConsoleEventName = "Service3" },
+			new ConsoleEvent { ConsoleEventCount = 4, ConsoleEventName = "Service4" },
+			new ConsoleEvent { ConsoleEventCount = 5, ConsoleEventName = "Service6" },
+			new ConsoleEvent { ConsoleEventCount = 9, ConsoleEventName = "Service7" },
+		};
+	}
+}

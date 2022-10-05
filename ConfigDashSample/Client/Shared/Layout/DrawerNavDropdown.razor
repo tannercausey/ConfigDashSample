@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@*@using Microsoft.AspNetCore.Components.Authorization*@
+
+@if (DropDownData.Expanded && (DropDownData.Children?.Any() ?? false))
+{
+	<li @onclick="@(()=> showChildren(DropDownData))" class="k-drawer-item">
+		<div class="k-level-@(DropDownData.Level)">
+			<TelerikIcon Icon="@DropDownData.Icon"></TelerikIcon>
+			@if (Expanded)
+			{
+				<span class="k-item-text">@DropDownData.Text</span>
+			}
+		</div>
+		<span class="k-icon k-i-arrow-chevron-up wm-k-dropdown-arrow"></span>
+	</li>
+	@foreach (var child in DropDownData.Children)
+	{
+		@if (child.AuthNeeded)
+		{
+			@*<AuthorizeView Roles="@child.RoleNeeded">*@
+				<DrawerNavLink href="@child.Url" Text="@child.Text" Icon="@child.Icon" Level="@child.Level" ExpandedDrawer="Expanded" />
+			@*</AuthorizeView>*@
+		}
+		else
+		{
+			<DrawerNavLink href="@child.Url" Text="@child.Text" Icon="@child.Icon" Level="@child.Level" ExpandedDrawer="Expanded" />
+		}
+	}
+}
+else
+{
+	<li @onclick="@(() => showChildren(DropDownData))" class="k-drawer-item">
+		<div class="k-level-@(DropDownData.Level)">
+			<TelerikIcon Icon="@DropDownData.Icon"></TelerikIcon>
+			@if (Expanded)
+			{
+				<span class="k-item-text">@DropDownData.Text</span>
+			}
+		</div>
+		<span class="k-icon k-i-arrow-chevron-down wm-k-dropdown-arrow"></span>
+	</li>
+}
+
+@code {
+	[Parameter] public DrawerItem DropDownData { get; set; } = default!;
+	[Parameter] public bool Expanded { get; set; } = false;
+
+	public void showChildren(DrawerItem selectedItem)
+	{
+		selectedItem.Expanded = !selectedItem.Expanded;
+	}
+}
+
+<style>
+	.wm-k-dropdown-arrow {
+		position: absolute;
+		right: 0;
+		line-height: inherit;
+		margin: 0 8px;
+	}
+</style>

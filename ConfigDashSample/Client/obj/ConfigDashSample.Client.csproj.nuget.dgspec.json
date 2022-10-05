@@ -1,0 +1,164 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Client\\ConfigDashSample.Client.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Client\\ConfigDashSample.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Client\\ConfigDashSample.Client.csproj",
+        "projectName": "ConfigDashSample.Client",
+        "projectPath": "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Client\\ConfigDashSample.Client.csproj",
+        "packagesPath": "C:\\Users\\t0c094i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\t0c094i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Shared\\ConfigDashSample.Shared.csproj": {
+                "projectPath": "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Shared\\ConfigDashSample.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Telerik.UI.for.Blazor": {
+              "target": "Package",
+              "version": "[3.6.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+              "version": "[6.0.9, 6.0.9]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "browser-wasm": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Shared\\ConfigDashSample.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Shared\\ConfigDashSample.Shared.csproj",
+        "projectName": "ConfigDashSample.Shared",
+        "projectPath": "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Shared\\ConfigDashSample.Shared.csproj",
+        "packagesPath": "C:\\Users\\t0c094i\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\t0c094i\\src\\repos\\.research\\ConfigDashSample\\ConfigDashSample\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\t0c094i\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            },
+            "Microsoft.JSInterop": {
+              "target": "Package",
+              "version": "[6.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

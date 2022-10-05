@@ -1,0 +1,17 @@
+﻿@font-face {
+	font-family: "Bogle Regular";
+	src: url("../fonts/BogleWeb-Regular.woff2") format('woff2');
+}
+
+@font-face {
+	font-family: "Bogle-Black";
+	src: url("../fonts/BogleWeb-Black.woff2") format('woff2');
+}
+
+body {
+	font-family: "Bogle Regular",'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	font-family: "Bogle Black",'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

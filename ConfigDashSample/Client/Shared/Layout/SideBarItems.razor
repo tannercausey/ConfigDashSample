@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Components.Routing
+@*@using Microsoft.AspNetCore.Components.Authorization*@
+
+<div class="k-drawer-items h-100">
+	<Logo Expanded="Expanded" />
+	<ul role="menubar" aria-orientation="vertical">
+		@foreach (DrawerItem item in Data)
+		{
+			if (item.AuthNeeded)
+			{
+				@*<AuthorizeView Roles="@item.RoleNeeded">*@
+					@if (item.Url == "display" && (item.Children?.Any() ?? false))
+					{
+						<DrawerNavDropdown DropDownData="item" Expanded="Expanded" />
+					}
+					else
+					{
+						<DrawerNavLink href="@item.Url" Text="@item.Text" Icon="@item.Icon" Level="@item.Level" ExpandedDrawer="Expanded" />
+					}
+				@*</AuthorizeView>*@
+			}
+			else
+			{
+				@if (item.Url == "display" && (item.Children?.Any() ?? false))
+				{
+					<DrawerNavDropdown DropDownData="item" Expanded="Expanded" />
+				}
+				else
+				{
+					<DrawerNavLink href="@item.Url" Text="@item.Text" Icon="@item.Icon" Level="@item.Level" ExpandedDrawer="Expanded" />
+				}
+			}
+		}
+	</ul>
+	<footer class="h-100">
+		<ul class="h-100 justify-content-end" role="menubar" aria-orientation="vertical">
+			<li class="k-drawer-item k-drawer-separator"></li>
+			<TelerikButton Class="menu-toggle-button" Icon="menu" @onclick="() => miniSwap()" />
+		</ul>
+	</footer>
+</div>
+
+@code {
+
+	[Parameter] public IEnumerable<DrawerItem> Data { get; set; } = default!;
+	[Parameter] public EventCallback OnClick { get; set; }
+	[Parameter] public bool Expanded { get; set; } = false;
+
+	public async Task miniSwap()
+	{
+		Expanded = !Expanded;
+		await OnClick.InvokeAsync();
+	}
+}
+
+<style>
+	.k-drawer-wrapper {
+		height: 100%;
+	}
+
+	.menu-toggle-button {
+		align-self: center;
+		max-width: 55px;
+		margin: 4px;
+	}
+
+	.k-level-1 {
+		padding-left: 15px;
+	}
+
+	.k-drawer-mini .k-drawer-wrapper {
+		width: 60px;
+	}
+</style>

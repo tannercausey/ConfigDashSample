@@ -1,0 +1,57 @@
+﻿@using ConfigDashSample.Shared.Models
+@using Telerik.DataSource
+@using Telerik.DataSource.Extensions
+
+<TelerikGrid @ref="@TopXGrid" TItem="@TopXUser" Height="100%" OnRead="@ReadItems" ScrollMode="@GridScrollMode.Scrollable"
+			OnStateInit="@((GridStateEventArgs<TopXUser> args) => OnStateInit(args))">
+	<GridColumns>
+		<GridColumn Field="@(nameof(TopXUser.username))" Title="Username" Width="150px"/>
+		<GridColumn Field="@(nameof(TopXUser.riskScore))" Title="Risk Score" Width="80px"/>
+	</GridColumns>
+</TelerikGrid>
+
+@code {
+	[Parameter]
+	public IEnumerable<TopXUser> TopXUsers { get; set; }
+	[Parameter]
+	public int TopN { get; set; } = 5;
+	TelerikGrid<TopXUser> TopXGrid { get; set; }
+
+	protected void ReadItems(GridReadEventArgs args)
+	{
+		//args.Request.PageSize = TopN;
+		//DataSourceResult result = Podcasts.ToDataSourceResult(args.Request);
+		//args.Data = (datasourceResult.Data as IEnumerable<PodcastViewModel>).ToList();
+		args.Data = new List<TopXUser>() { new TopXUser("CL\\PO4D6U0", "79.48"), new TopXUser("HO\\LTESTER", "78.84"),
+			new TopXUser("HO\\ASTIRRO", "78.76"), new TopXUser("HO\\P0P30TP2", "77.84"), new TopXUser("WM\\DUMMYACCT", "77.67") };
+		//args.Total = result.Total;
+	}
+	void UpdateTopX()
+	{
+		if (TopXGrid != null && TopXUsers != null)
+			TopXGrid.Rebind();
+	}
+	protected override void OnParametersSet()
+	{
+		UpdateTopX();
+		base.OnParametersSet();
+	}
+	void OnStateInit(GridStateEventArgs<TopXUser> args)
+	{
+		args.GridState = new GridState<TopXUser>()
+		{
+			SortDescriptors = new List<SortDescriptor>
+			{
+				new SortDescriptor {Member = nameof(TopXUser.riskScore), SortDirection = ListSortDirection.Descending }
+			}
+		};
+	}
+	public class TopXUser {
+		public string username { get; set; }
+		public string riskScore { get; set; }
+		public TopXUser(string username, string riskScore) {
+			this.username = username;
+			this.riskScore = riskScore;
+		}
+	}
+}

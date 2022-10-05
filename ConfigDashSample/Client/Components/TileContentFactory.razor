@@ -1,0 +1,24 @@
+﻿@using ConfigDashSample.Client.Components.Tiles
+@using ConfigDashSample.Shared.Models
+
+@switch (TileContent)
+{
+	case "TopX":
+		<TopX></TopX>
+		break;
+	case "ConsoleEvents":
+		<ConsoleEvents></ConsoleEvents>
+		break;
+	case "Risks":
+		<Risks></Risks>
+		break;
+	default:
+		break;
+}
+@code {
+	[Parameter]
+	public string TileContent { get; set; }
+
+	/*[Parameter]
+	public IEnumerable<PodcastViewModel> Podcasts { get; set; }*/
+}
